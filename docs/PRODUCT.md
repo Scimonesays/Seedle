@@ -4,7 +4,25 @@
 
 Seedle is a household-scale autonomous food system. A user supplies seeds, water, nutrient concentrates, electrical/solar energy, and replaceable fabrication feedstock. Seedle manages overlapping crop cycles so a household receives a predictable rolling harvest with minimal gardening labor.
 
-The first product goal is **one fresh meal per day**, not complete nutritional independence.
+The first household product goal is **one fresh meal per day**, not complete nutritional independence.
+
+Before that, Seedle is developed through **Seedle P1**, a 1–5 plant prototype whose job is to prove the autonomous growing and maintenance loops at small scale.
+
+## Seedle P1
+
+Seedle P1 maintains **1–5 plants simultaneously**. It is the reference development platform for:
+
+- hydroponic control
+- GrowSpec execution
+- plant-state sensing
+- compact crop-head motion
+- tool changing
+- serviceable grow cells
+- safe pruning/harvest experiments
+- maintenance-access experiments
+- telemetry and community-data formats
+
+P1 is intentionally not sized to feed a person. Scaling comes only after these loops are dependable.
 
 ## Seedle One
 
