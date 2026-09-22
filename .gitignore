@@ -1,0 +1,33 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# JS/TS
+node_modules/
+dist/
+coverage/
+.next/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Rust
+target/
+
+# CAD / generated manufacturing exports
+*.gcode
+*.3mf.tmp
+
+# Local data / telemetry
+data/local/
+telemetry/
+logs/
