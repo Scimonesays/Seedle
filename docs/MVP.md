@@ -1,6 +1,43 @@
 # Seedle MVP Roadmap
 
-Seedle should not begin by building the dome. It should prove the difficult control loops in increasing levels of physical risk.
+Seedle should not begin by building a meal-scale dome. The first physical prototype is **Seedle P1: a compact 1–5 plant machine**.
+
+The goal of P1 is to prove autonomy on a few plants before scaling area, crop count, power, or structural complexity.
+
+## Seedle P1 — prototype contract
+
+**Capacity:** 1–5 simultaneous plants.
+
+**Primary proof:** Seedle can maintain real plants using the same software and modular principles intended for the larger system.
+
+P1 should prove, in stages:
+
+- GrowSpec-driven plant lifecycle state
+- hydroponic/root-zone control
+- nutrient and pH sensing/control with hard limits
+- natural/supplemental light accounting
+- camera-based plant inspection
+- crop-head positioning
+- tool identification/change
+- one or more safe plant interventions
+- harvest detection for at least one supported crop
+- removable/serviceable grow cells
+- basic maintenance access
+- telemetry and event history
+- safe failure/recovery
+
+P1 does **not** need:
+
+- meal-per-day output
+- a full-size dome
+- a large battery bank
+- full solar independence
+- every crop-head type
+- complete robotic self-repair
+- plastic recycling
+- family-scale crop planning
+
+The architecture should allow those systems to be added later without throwing P1 away.
 
 ## Phase 0 — Definitions
 
@@ -21,144 +58,175 @@ Exit condition: one crop lifecycle can be represented without hardware-specific 
 
 Build a software-only environment containing:
 
-- virtual grow cells
+- 1–5 virtual grow cells
 - virtual crop state
 - weather/natural-light input
 - nutrient reservoir model
 - energy budget
 - staggered crop scheduler
-- daily harvest projection
 - tool/capability resolver
 - failure injection
 
 Minimum demonstration:
 
-> Given a meal target and crop library, SeedOS schedules overlapping crop cycles and keeps a rolling projected harvest queue without directly commanding imaginary hardware.
+> Given 1–5 crop instances, SeedOS can maintain different biological stages concurrently, request the correct capabilities, account for light/nutrients, and recover safely from simulated faults.
 
-## Phase 2 — Single hydroponic cell
+## Phase 2 — Seedle P1 wet prototype
 
-One real crop cell with:
+Build a compact real system supporting **1–5 hydroponic plants**.
 
-- reservoir
-- pump
-- EC/pH/temperature sensing
-- lighting
+Minimum hardware:
+
+- 1–5 removable grow cells
+- shared or zoned reservoir
+- pump/aeration
+- EC/pH/solution-temperature sensing
+- air temperature/humidity sensing
+- controllable supplemental lighting
 - camera
-- environmental sensing
+- leak detection
 - hard safety cutoffs
+- local SeedOS computer/controller
 
-No cutting tool.
+No cutting tool is required initially.
 
 Exit condition:
 
-- GrowSpec drives a crop from seedling to manual harvest.
+- GrowSpec drives at least one real plant from seedling to manual harvest.
+- Multiple plants can be maintained at different stages.
 - Telemetry shows every control decision and safety bound.
 - Fluid faults can be injected without unsafe dosing.
+- Any grow cell can be removed for service without dismantling the prototype.
 
-## Phase 3 — Multi-cell staggered growing
+## Phase 3 — P1 crop head
 
-8–16 cells.
+Add a compact overhead/bridge motion system appropriate for the 1–5 plant footprint.
+
+Add:
+
+- XY/XYZ positioning as required
+- camera positioning
+- tool docking
+- seeding or placement head
+- non-cutting inspection/manipulation tool
+
+Exit condition:
+
+- repeatable plant/cell addressing
+- automatic tool identity verification
+- collision-safe movement
+- calibration recovery
+- access to all 1–5 plant positions
+
+## Phase 4 — Controlled plant intervention
+
+Only after guarded test rigs.
+
+Add one intervention at a time:
+
+- soft gripper
+- pollination/vibration
+- training/support interaction
+- scissors/cutter
+- harvest transfer
+
+Exit condition:
+
+- each action requires a verified target
+- action is logged
+- post-action inspection occurs
+- uncertain state causes safe abort, not a guessed action
+
+Start with plants/crops that have simple, observable geometry.
+
+## Phase 5 — P1 maintenance demonstrator
+
+Close a small maintenance loop within the same 1–5 plant prototype.
+
+Include:
+
+- removable grow cell
+- accessible under-cell valve/sensor
+- maintainer access path
+- replaceable pump/valve/sensor cartridge
+- printed replacement component handoff or installation experiment
+
+Exit condition:
+
+> A deliberately failed replaceable module can be isolated, removed, replaced, tested, and returned to service without dismantling the machine.
+
+Full autonomous self-repair is not required yet.
+
+## Phase 6 — Staggered 1–5 plant operation
+
+Use the limited capacity to prove scheduling logic.
+
+Examples:
+
+- one plant germinating
+- one vegetative
+- one flowering
+- one fruiting
+- one in harvest/turnover
 
 Prove:
 
 - overlapping plant ages
 - resource sharing
-- daily/rolling harvest forecasting
-- automatic seeding for supported crop
-- natural-light accounting
-- Family Adapt prototype using simulated/explicit consumption events
+- early/late growth replanning
+- harvest-window forecasting
+- automatic turnover for supported cells
+- first Family Adapt experiments using explicit consumption/harvest events
 
-## Phase 4 — Crop gantry
+This phase proves the scheduling idea even though five plants cannot yet provide a daily meal.
 
-Add:
+## Phase 7 — Environmental/solar demonstrators
 
-- XY/XYZ positioning
-- camera
-- tool docking
-- seeding head
-- non-cutting inspection/manipulation tool
+Develop small representative sections rather than a full dome:
 
-Exit condition:
-
-- repeatable cell addressing
-- automatic tool identity verification
-- collision-safe movement
-- calibration recovery
-
-## Phase 5 — Controlled cutting and harvest
-
-Only after guarded test rigs.
-
-Add:
-
-- scissors/cutter
-- soft gripper
-- vision-based verified cut target
-- post-action inspection
-- safe abort
-
-Start with crops that present mechanically simple harvest geometry.
-
-## Phase 6 — Maintenance-access demonstrator
-
-Build a vertical slice containing:
-
-- one grow cell
-- under-bed valve/sensor
-- service spine
-- maintainer manipulator or carriage
-- replaceable pump/valve cartridge
-- fabrication handoff
-
-Exit condition:
-
-> A deliberately failed replaceable module can be isolated, removed, replaced, tested, and returned to service without human access inside the mechanism.
-
-## Phase 7 — Environmental enclosure
-
-Add:
-
-- dome/enclosure prototype
-- active ventilation
-- representative rotating solar shutter section
+- one active ventilation section
+- one rotating solar-shutter section
+- light-transmission measurement
 - thermal model
-- rain/leak management
-- service access
+- weather-safe default pose
+- robotic/manual service access
 
-## Phase 8 — Seedle Alpha
+## Phase 8 — Scale beyond P1
 
-Integrate enough cells and crop types to demonstrate continuous useful harvest.
+Only after the 1–5 plant machine is reliable should Seedle expand toward:
 
-Alpha target:
+- 8–16 plants
+- larger crop variety
+- stronger harvest automation
+- larger service network
+- modular grow extensions
+- household meal queue
+- active dome
+- solar/battery integration
 
-- autonomous staggered production
-- supported automatic harvest
-- household food queue
-- modular expansion
-- community data export
-- safe fallback modes
+The meal-per-day product target belongs here, after the small system has proven the control loops.
 
-## Metrics
+## P1 success metrics
 
-Seedle should be evaluated on more than yield.
+For the 1–5 plant prototype, prioritize reliability over food quantity.
 
 Track:
 
-- edible kcal/day
-- edible mass/day
-- harvest continuity
-- protein/fat contribution
-- yield per m²
-- yield per kWh
-- yield per liter of makeup water
-- nutrient input per edible kg
-- labor minutes/week
-- intervention frequency
+- plant survival
+- successful completed crop cycles
+- intervention minutes/week
+- sensor uptime
+- dosing accuracy
+- light-target tracking
 - tool-change success
-- harvest success
-- crop loss
-- module failure rate
-- repair success
-- root clogging events
-- wasted food
-- user-selected recipe fulfillment
+- motion positioning repeatability
+- harvest-detection accuracy
+- root-clogging events
+- leak events
+- module service time
+- repair/replacement success
+- number of human interventions
+- unexplained failures
+- data completeness
+
+Food mass and calories should still be recorded, but they are **observations**, not the primary P1 success criterion.
