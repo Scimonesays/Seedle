@@ -80,6 +80,7 @@ The crop robot is optimized for plants. The maintenance system is optimized for 
 - `docs/PRODUCT.md` — product definition and non-negotiable design principles.
 - `docs/ARCHITECTURE.md` — physical, robotic, software, and data architecture.
 - `docs/MVP.md` — staged prototype plan and acceptance criteria.
+- `docs/BUILD_REQUIREMENTS.md` — complete hardware, software, fabrication, safety, and scaling requirements for Seedle P1 and later systems.
 - `docs/COMMUNITY.md` — community upgrade and evidence model.
 - `docs/SAFETY.md` — safety model and hard limits.
 - `specs/GROWSPEC.md` — GrowSpec standard.
