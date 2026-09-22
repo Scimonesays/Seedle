@@ -20,13 +20,23 @@ Seedle combines a beautiful controlled-environment grow dome with an overhead cr
 - **Natural-light first** — rotating solar shutters allocate sunlight between the plants, thermal control, weather protection, and electrical generation; supplemental lighting fills only the measured deficit.
 - **Hydroponic, media-minimized growing** — reusable/openable root modules avoid permanent soil and are designed around automated root release, cleaning, and crop turnover.
 
-## Seedle One — MVP product contract
+## Prototype contract — Seedle P1
 
-Seedle One is the first system to prove the platform.
+The first physical Seedle is deliberately small: **1–5 plants**.
+
+Its purpose is not to make a meal every day yet. Its purpose is to prove that the core Seedle loop works on real living plants:
+
+> **maintain 1–5 plants from seed/seedling through growth, tending, harvest, turnover, and replanting with progressively less human intervention.**
+
+The prototype should fit on a bench, cart, or compact stand and preserve the same architecture intended for larger Seedle systems: GrowSpec, ModuleSpec, tool changing, hydroponics, machine vision, serviceability, and safe closed-loop control.
+
+## Seedle One — future product contract
+
+Seedle One is the first household-scale product target.
 
 **Primary outcome:** maintain a rolling queue capable of producing approximately one fresh meal per day.
 
-The MVP does **not** promise total human nutrition or complete self-replication. It proves continuous crop scheduling and increasingly autonomous operation.
+Seedle P1 does **not** need to hit this output. P1 exists to prove the biological, robotic, and maintenance loops before scaling plant count.
 
 The machine should:
 
