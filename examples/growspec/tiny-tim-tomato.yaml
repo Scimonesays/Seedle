@@ -1,0 +1,132 @@
+growspec: "0.1"
+
+identity:
+  id: tomato.tiny-tim.seedle-example
+  version: "0.1.0"
+  evidence_level: draft
+
+crop:
+  common_name: Tomato
+  scientific_name: Solanum lycopersicum
+  cultivar: Tiny Tim
+
+compatibility:
+  grow_module_classes: [M]
+
+environment:
+  air_temperature_c:
+    preferred_day: [22, 26]
+    preferred_night: [17, 20]
+  relative_humidity_percent:
+    preferred: [55, 70]
+
+lighting:
+  strategy: natural_first
+  stages:
+    seedling:
+      photoperiod_hours: [14, 18]
+    vegetative:
+      photoperiod_hours: [14, 18]
+    flowering:
+      photoperiod_hours: [13, 17]
+  note: DLI targets intentionally omitted until validated.
+
+root_zone:
+  solution_temperature_c:
+    preferred: [18, 22]
+  note: Example only; validate production targets experimentally.
+
+nutrition:
+  control: closed_loop_target
+  note: EC/pH targets intentionally omitted from this draft example until validated.
+
+stages:
+  - id: germination
+    exit:
+      metric: vision.true_leaf_count
+      op: gte
+      value: 2
+
+  - id: vegetative
+    enter:
+      metric: vision.true_leaf_count
+      op: gte
+      value: 2
+    exit:
+      metric: vision.open_flower_count
+      op: gte
+      value: 1
+
+  - id: flowering
+    enter:
+      metric: vision.open_flower_count
+      op: gte
+      value: 1
+    exit:
+      metric: vision.fruit_count
+      op: gte
+      value: 1
+
+  - id: fruiting
+    enter:
+      metric: vision.fruit_count
+      op: gte
+      value: 1
+
+interventions:
+  - id: inspect_growth
+    requires: [inspect_rgb]
+    procedure:
+      intent: update_plant_model
+    on_failure: retry_then_request_review
+
+  - id: example_topping_rule
+    once: true
+    when:
+      all:
+        - metric: vision.node_count
+          op: gte
+          value: 5
+        - metric: plant.health_score
+          op: gte
+          value: 0.90
+    requires: [inspect_rgb, cut_stem]
+    procedure:
+      intent: cut_above_verified_node
+      parameters:
+        node: 5
+    verify:
+      - expected: cut_confirmed
+        min_confidence: 0.97
+    on_failure: safe_abort_and_request_review
+
+  - id: pollinate_open_flowers
+    requires: [inspect_rgb, vibrate_flower]
+    procedure:
+      intent: vibrate_verified_open_flower_clusters
+    on_failure: log_and_retry_within_window
+
+harvest:
+  requires: [inspect_rgb, soft_grasp, cut_stem, transfer_harvest]
+  readiness:
+    intent: cultivar_specific_ripeness_model
+    min_confidence: 0.95
+  procedure:
+    intent: support_cut_transfer_and_verify
+
+turnover:
+  procedure:
+    - harvest_remaining_usable_crop
+    - isolate_cell
+    - release_plant
+    - remove_root_biomass
+    - wash_cell
+    - sanitize_cell
+    - inspect_cell
+    - return_cell_to_service
+
+evidence:
+  status: illustrative_only
+  warning: >
+    This example defines orchestration structure, not validated horticultural
+    targets. It must not be treated as a production tomato recipe.
